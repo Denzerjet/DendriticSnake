@@ -1,58 +1,52 @@
-#Code is adapted from Wajiha Urooj's snake game
-#https://www.edureka.co/blog/snake-game-with-pygame/
-
 import pygame
 import time
 import random
-#initializes all functions of pygame
+
 pygame.init()
 
-#defines colors
 white = (255, 255, 255)
 yellow = (255, 255, 102)
 black = (0, 0, 0)
 red = (213, 50, 80)
 green = (0, 255, 0)
 blue = (50, 153, 213)
-gray = (169, 169, 169)
 
-#dimensions of the screen
-display_width = 600
-display_height = 400
+dis_width = 600
+dis_height = 400
 
-display = pygame.display.set_mode((display_width, display_height))
-pygame.display.set_caption('Snake Game')
+dis = pygame.display.set_mode((dis_width, dis_height))
+pygame.display.set_caption('Snake Game by Edureka')
 
 clock = pygame.time.Clock()
 
 snake_block = 10
 snake_speed = 15
 
-font_style = pygame.font.SysFont("timesnewroman", 25)
-score_font = pygame.font.SysFont("timesnewroman", 35)
+font_style = pygame.font.SysFont("bahnschrift", 25)
+score_font = pygame.font.SysFont("comicsansms", 35)
 
 
 def Your_score(score):
-    value = score_font.render("Your Score: " + str(score), True, black)
-    display.blit(value, [0, 0])
+    value = score_font.render("Your Score: " + str(score), True, yellow)
+    dis.blit(value, [0, 0])
 
 
 def our_snake(snake_block, snake_list):
     for x in snake_list:
-        pygame.draw.rect(display, green, [x[0], x[1], snake_block, snake_block])
+        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
 
 
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
-    display.blit(mesg, [display_width / 6, display_height / 3])
+    dis.blit(mesg, [dis_width / 6, dis_height / 3])
 
 
 def gameLoop():
     game_over = False
     game_close = False
 
-    x1 = display_width / 2
-    y1 = display_height / 2
+    x1 = dis_width / 2
+    y1 = dis_height / 2
 
     x1_change = 0
     y1_change = 0
@@ -60,14 +54,14 @@ def gameLoop():
     snake_List = []
     Length_of_snake = 1
 
-    foodx = round(random.randrange(0, display_width - snake_block) / 10.0) * 10.0
-    foody = round(random.randrange(0, display_height - snake_block) / 10.0) * 10.0
+    foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+    foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
 
     while not game_over:
 
         while game_close == True:
-            display.fill(black)
-            message("You Lost! Press W-Play Again or Q-Quit", red)
+            dis.fill(blue)
+            message("You Lost! Press C-Play Again or Q-Quit", red)
             Your_score(Length_of_snake - 1)
             pygame.display.update()
 
@@ -76,7 +70,7 @@ def gameLoop():
                     if event.key == pygame.K_q:
                         game_over = True
                         game_close = False
-                    if event.key == pygame.K_w:
+                    if event.key == pygame.K_c:
                         gameLoop()
 
         for event in pygame.event.get():
@@ -96,12 +90,12 @@ def gameLoop():
                     y1_change = snake_block
                     x1_change = 0
 
-        if x1 >= display_width or x1 < 0 or y1 >= display_height or y1 < 0:
+        if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
             game_close = True
         x1 += x1_change
         y1 += y1_change
-        display.fill(black)
-        pygame.draw.rect(display, red, [foodx, foody, snake_block, snake_block])
+        dis.fill(blue)
+        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block])
         snake_Head = []
         snake_Head.append(x1)
         snake_Head.append(y1)
@@ -119,8 +113,8 @@ def gameLoop():
         pygame.display.update()
 
         if x1 == foodx and y1 == foody:
-            foodx = round(random.randrange(0, display_width - snake_block) / 10.0) * 10.0
-            foody = round(random.randrange(0, display_height - snake_block) / 10.0) * 10.0
+            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
             Length_of_snake += 1
 
         clock.tick(snake_speed)
