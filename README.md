@@ -26,4 +26,5 @@ Gradually lower gamma so that we value exploration highly at first and gradually
   
 To keep things simple the state is simply based on the exact step, like moving one block in the game, and not about cumulative reward  
 
+## References
 All thanks to Vijay and Patrick Loeber!
