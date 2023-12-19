@@ -1,15 +1,28 @@
 # NeuroticSnake
 
-The original upload failed
+Deep Q learning neural network to play snake game
 
-neurotic snake exists on an old computer
+11-256-3, input-hidden-output
+output: straight, left, right (pick highest activated neuron)
 
-do not currently have access to it, will upload when I do
+loss: mean squared error
 
-or might re-write it lol
+reward:
++10 when eat food
+-10 when die
++0 else
 
-sum:
+input: [
+danger_right, danger_left, danger_forward,
+direction_right, direction_up, direction_down, direction_left,
+food_right, food_up, food_down, food_left
+]
 
-it was an 11 input bool layer of (foodx, foody, snake_headx, snake_heady, obstacle_north, obstacle_west, obstacle_east, obstacle_south, grid_height, grid_width, something_else)
+Agent: trains the model
+Game: snake game
+Model: linear q net
 
-it was reinforcement learning so -1 score when it died, +0.1 when it got a food
+Uses bellman-equation
+Gradually lower gamma so that we value exploration highly at first and gradually switch to exploitation
+
+To keep things simple the state is simply based on the exact step, like moving one block in the game, and not about cumulative reward
