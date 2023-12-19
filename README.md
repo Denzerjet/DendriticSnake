@@ -11,7 +11,7 @@ reward:
 -10 when die  
 +0 else  
   
-input: [. 
+input: [  
 danger_right, danger_left, danger_forward,  
 direction_right, direction_up, direction_down, direction_left,  
 food_right, food_up, food_down, food_left  
