@@ -25,3 +25,5 @@ Uses bellman-equation
 Gradually lower gamma so that we value exploration highly at first and gradually switch to exploitation  
   
 To keep things simple the state is simply based on the exact step, like moving one block in the game, and not about cumulative reward  
+
+All thanks to Vijay and Patrick Loeber!
