@@ -4,6 +4,8 @@ Deep Q learning neural network to play snake game
 11-256-3, input-hidden-output  
 output: straight, left, right (pick highest activated neuron)  
 
+step: each moment the snake can turn  
+
 loss: mean squared error  
 
 reward:  
