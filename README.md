@@ -1,4 +1,4 @@
-# NeuroticSnake
+# DendriticSnake
 Deep Q learning neural network to play snake game  
   
 11-256-3, input-hidden-output  
